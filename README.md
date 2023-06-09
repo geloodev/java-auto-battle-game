@@ -1,1 +1,1 @@
-# Java Text-Based Game
+# Java Auto-Battle Game
