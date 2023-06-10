@@ -45,10 +45,19 @@
    </dependency>
 
    <dependency>
-      <groupId>org.hibernate</groupId>
+      <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-core</artifactId>
-      <version>6.2.3.Final</version>
-      <type>pom</type>
+      <version>6.2.4.Final</version>
+     <exclusions>
+       <exclusion>
+         <artifactId>jakarta.activation-api</artifactId>
+         <groupId>jakarta.activation</groupId>
+       </exclusion>
+       <exclusion>
+         <artifactId>jakarta.activation-api</artifactId>
+         <groupId>jakarta.activation</groupId>
+       </exclusion>
+     </exclusions>
    </dependency>
 
   </dependencies>
