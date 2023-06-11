@@ -48,16 +48,12 @@
       <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-core</artifactId>
       <version>6.2.4.Final</version>
-     <exclusions>
-       <exclusion>
-         <artifactId>jakarta.activation-api</artifactId>
-         <groupId>jakarta.activation</groupId>
-       </exclusion>
-       <exclusion>
-         <artifactId>jakarta.activation-api</artifactId>
-         <groupId>jakarta.activation</groupId>
-       </exclusion>
-     </exclusions>
+   </dependency>
+
+   <dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.10.1</version>
    </dependency>
 
   </dependencies>
@@ -111,4 +107,17 @@
       </plugins>
     </pluginManagement>
   </build>
+
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>jakarta.activation</groupId>
+        <artifactId>jakarta.activation-api</artifactId>
+        <version>2.1.0</version>
+      </dependency>
+
+    </dependencies>
+
+  </dependencyManagement>
 </project>
