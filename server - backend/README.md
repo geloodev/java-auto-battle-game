@@ -7,7 +7,7 @@
 
 - Character
     - character_id
-    - name
+    - character_name
     - strength
     - dexterity
     - constitution
@@ -17,7 +17,7 @@
 
 - Race
     - race_id
-    - name
+    - race_name
     - strength_modifier
     - dexterity_modifier
     - constitution_modifier
@@ -25,15 +25,17 @@
     - winsdom_modifier
     - charisma_modifier
 
-- Character_Class
-    - class_id
-    - name
+- Role
+    - role_id
+    - role_name
+    - description
     - health_points
     - mana_points
 
 - Weapon
     - weapon_id
-    - name
+    - weapon_name
+    - description
     - dammage_dice
     - category
     - type
