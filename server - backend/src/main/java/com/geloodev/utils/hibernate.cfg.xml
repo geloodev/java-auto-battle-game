@@ -14,7 +14,11 @@
 		<property name="hibernate.format_sql">false</property>
 		<property name="hbm2ddl.auto">update</property>
 
+		<mapping class="com.geloodev.models.Character" />
+		<mapping class="com.geloodev.models.CharacterClass" />
 		<mapping class="com.geloodev.models.Player" />
+		<mapping class="com.geloodev.models.Race" />
+		<mapping class="com.geloodev.models.Weapon" />
 
 	</session-factory>
 </hibernate-configuration>
