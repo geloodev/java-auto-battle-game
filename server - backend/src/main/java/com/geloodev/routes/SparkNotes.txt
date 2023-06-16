@@ -1,0 +1,21 @@
+public void selectById() {
+        get("/players/:id", (request, response) -> {
+            player = dao.selectById(UUID.fromString(request.params(":id")));
+            Gson gson = new Gson();
+            return gson.toJson(player);
+        });
+    }
+
+    public void insert() {
+        post("/players/insert", (request, response) -> {
+            //player.setName(request.queryParams("name"));
+            //player.setEmail(request.queryParams("email"));
+            //player.setPassword(request.queryParams("password"));
+
+            String body = request.body();
+            ObjectMapper objectMapper = new ObjectMapper();
+            player = objectMapper.readValue(body, Player.class);
+            dao.insert(player);
+            return new Gson().toJson(player);
+        });
+    }
