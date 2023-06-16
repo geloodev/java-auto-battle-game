@@ -1,27 +1,48 @@
 package com.geloodev.daos;
 
-import static spark.Spark.get;
 import java.util.List;
+import java.util.UUID;
 import org.hibernate.Session;
 import com.geloodev.models.Race;
 import com.geloodev.utils.HibernateUtil;
-import com.google.gson.Gson;
 
-public class RaceDAO {
-    
-    public RaceDAO() {
-        HibernateUtil.init();
+public class RaceDAO extends DAO<Race> {
+
+    public List<Race> selectAll() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Race> races = session.createQuery("FROM Race", Race.class).list();
+        session.close();
+        return races;
     }
 
-    public void list() {
-        get("/races", (request, response) -> {
-            Session session = HibernateUtil.geSessionFactory().openSession();
-            List<Race> races = session.createQuery("FROM Race", Race.class).list();
-            session.close();
+    public Race selectById(UUID id) {
+        Session session = HibernateUtil.open();
+        Race race = session.createQuery("FROM Race WHERE id = :id", Race.class)
+            .setParameter("id", id)
+            .uniqueResult();
+        session.close();
+        return race;
+    }
 
-            Gson gson = new Gson();
-            return gson.toJson(races);
-        });
+    public Race selectByName(String name) {
+        Session session = HibernateUtil.open();
+        Race race = session.createQuery("FROM Race WHERE name = :name", Race.class)
+            .setParameter("name", name)
+            .uniqueResult();
+        session.close();
+        return race;
+    }
+
+    public void insert(Race race) {
+        HibernateUtil.insert(race);
+    }
+
+    public void update(Race race) {
+        HibernateUtil.update(race);
+    }
+
+    public void delete(Race race) {
+        HibernateUtil.delete(race);
     }
 }
 
