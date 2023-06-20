@@ -11,4 +11,20 @@ public class Weapon extends Base {
 
     @Column(name = "category")
     private String category;
+
+    public String getDammage() {
+        return dammage;
+    }
+
+    public void setDammage(String dammage) {
+        this.dammage = dammage;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 }

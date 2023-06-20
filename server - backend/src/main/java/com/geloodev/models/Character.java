@@ -36,32 +36,75 @@ public class Character extends Base {
     @JoinColumn(name = "weapon_id")
     Weapon weapon;
 
-    @ManyToOne
-    @JoinColumn(name = "player_id")
-    Player player;
+    public int getStrength() {
+        return strength;
+    }
 
-    public void setAttributes(int strength, int dexterity, int constitution, int intelligence, int winsdom, int charisma) {
+    public void setStrength(int strength) {
         this.strength = strength;
+    }
+
+    public int getDexterity() {
+        return dexterity;
+    }
+
+    public void setDexterity(int dexterity) {
         this.dexterity = dexterity;
+    }
+
+    public int getConstitution() {
+        return constitution;
+    }
+
+    public void setConstitution(int constitution) {
         this.constitution = constitution;
-        this. intelligence = intelligence;
+    }
+
+    public int getIntelligence() {
+        return intelligence;
+    }
+
+    public void setIntelligence(int intelligence) {
+        this.intelligence = intelligence;
+    }
+
+    public int getWinsdom() {
+        return winsdom;
+    }
+
+    public void setWinsdom(int winsdom) {
         this.winsdom = winsdom;
+    }
+
+    public int getCharisma() {
+        return charisma;
+    }
+
+    public void setCharisma(int charisma) {
         this.charisma = charisma;
+    }
+
+    public Race getRace() {
+        return race;
     }
 
     public void setRace(Race race) {
         this.race = race;
     }
 
+    public CharacterClass gCharacterClass() {
+        return characterClass;
+    }
+
     public void setCharacterClass(CharacterClass characterClass) {
         this.characterClass = characterClass;
     }
 
-    public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
+    public Weapon getWeapon() {
+        return weapon;
     }
 
-    public void setPlayer(Player player) {
-        this.player = player;
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
     }
 }
