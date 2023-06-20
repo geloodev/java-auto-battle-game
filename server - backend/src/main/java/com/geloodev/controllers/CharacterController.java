@@ -1,41 +1,51 @@
 package com.geloodev.controllers;
 
+import static spark.Spark.*;
+
+import java.io.StringWriter;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.geloodev.daos.CharacterDAO;
 import com.geloodev.models.Character;
-import com.geloodev.models.Player;
-import com.geloodev.strategies.character_classes.CharacterClassStrategy;
-import com.geloodev.strategies.races.RaceStrategy;
-import com.geloodev.strategies.weapons.WeaponStrategy;
+import com.geloodev.utils.FreeMarkerUtil;
+
+import freemarker.template.Template;
 
 public class CharacterController {
 
     private Character character;
-    private CharacterDAO dao;
+    private CharacterDAO characterDAO;
     
-    public CharacterController() {
-        character = new Character();
-        dao = new CharacterDAO();
+    public CharacterController(Character character, CharacterDAO characterDAO) {
+        this.character = character;
+        this.characterDAO = characterDAO;
     }
 
-    public void create(String name, int strength, int dexterity, int constitution, int intelligence, int winsdom, int charisma, 
-                        RaceStrategy raceStrategy, CharacterClassStrategy characterClassStrategy, WeaponStrategy weaponStrategy, 
-                        Player player) {
+    public void list() {
+        get("/characters", (request, response) -> {
+            List<Character> characters = characterDAO.selectAll();
+            
+            Map<String, Object> map = new HashMap<>();
+            map.put("characters", characters);
 
-        character.setName(name);
-        character.setAttributes(strength, dexterity, constitution, intelligence, winsdom, charisma);
-        character.setRace(raceStrategy.setRace());
-        character.setCharacterClass(characterClassStrategy.setCharacterClass());
-        character.setWeapon(weaponStrategy.setWeapon());
-        character.setPlayer(player);
-
-        dao.insert(character);
+            Template template = FreeMarkerUtil.getConfiguration().getTemplate("characters/list.ftl");
+            StringWriter writer = new StringWriter();
+            template.process(map, writer);
+            return writer;
+        });
     }
 
-    public Character get() {
-        return dao.selectByName(character.getName());
+    public void create() {
+        characterDAO.insert(character);
+    }
+
+    public void update() {
+        characterDAO.update(character);
     }
 
     public void delete() {
-        dao.delete(character);
+        characterDAO.delete(character);
     }
 }
