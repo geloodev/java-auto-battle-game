@@ -36,6 +36,24 @@ public class Character extends Base {
     @JoinColumn(name = "weapon_id")
     Weapon weapon;
 
+    public Character() {
+
+    }
+
+    public Character(String name, int strength, int dexterity, int constitution, int intelligence, int winsdom, int charisma,
+        Race race, CharacterClass characterClass, Weapon weapon) {
+            this.setName(name);
+            this.strength = strength;
+            this.dexterity = dexterity;
+            this.constitution = constitution;
+            this.intelligence = intelligence;
+            this.winsdom = winsdom;
+            this.charisma = charisma;
+            this.race = race;
+            this.characterClass = characterClass;
+            this.weapon = weapon;
+    }
+
     public int getStrength() {
         return strength;
     }
@@ -92,7 +110,7 @@ public class Character extends Base {
         this.race = race;
     }
 
-    public CharacterClass gCharacterClass() {
+    public CharacterClass getCharacterClass() {
         return characterClass;
     }
 
