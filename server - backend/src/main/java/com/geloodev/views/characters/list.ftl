@@ -17,6 +17,7 @@
                 <li>winsdom: ${character.winsdom}</li>
                 <li>charisma: ${character.charisma}</li>
                 <li>Race: ${character.race.name}</li>
+                <li>Class: ${character.characterClass.name}</li>
                 <li>Weapon: ${character.weapon.name}</li>
                 <br>
             </#list>
